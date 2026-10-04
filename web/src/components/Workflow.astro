@@ -1,0 +1,94 @@
+---
+// src/components/Workflow.astro
+
+const steps = [
+  {
+    number: "01",
+    title: "Competitive & Market Analysis",
+    description: "We analyze the websites, keywords, ad strategies, and content moats of your top competitors. What are they doing well? Where are the gaps? Where has the market left opportunities uncontested? This work is the foundation of PMI's standalone Analytics service — see the analytics page for the full methodology and sample deliverables.",
+    bgColor: "bg-black",
+    textColor: "text-stone-200",
+    borderColor: "border-white/10",
+    accent: "text-[#F38DF6]"
+  },
+  {
+    number: "02",
+    title: "Keyword Research",
+    description: "We identify the specific search phrases your ideal customers are typing — not just the obvious ones, but the long-tail, high-intent phrases that convert. These become the backbone of your website and SEO strategy.",
+    bgColor: "bg-black",
+    textColor: "text-stone-200",
+    borderColor: "border-white/10",
+    accent: "text-[#F38DF6]"
+  },
+  {
+    number: "03",
+    title: "Messaging & Branding",
+    description: "We develop your core value proposition and the messaging hierarchy that runs through every page of your site. What makes you different? Why should a prospect in Wyomissing or Bethlehem choose you over the competition? We answer those questions before anything is designed.",
+    bgColor: "bg-black",
+    textColor: "text-stone-200",
+    borderColor: "border-white/10",
+    accent: "text-[#F38DF6]"
+  },
+  {
+    number: "04",
+    title: "Strategy & Build",
+    description: "Only after the first three steps are complete do we build your website, launch your campaigns, or begin your SEO work. This is why our clients see results — and why the results last.",
+    bgColor: "bg-black",
+    textColor: "text-stone-200",
+    borderColor: "border-white/10",
+    accent: "text-[#F38DF6]"
+  }
+];
+---
+
+<section id="workflow" class="relative bg-[#E7E5E4]">
+  
+  <!-- Intro Header (Sticky on desktop, relative on mobile) -->
+  <div class="relative md:sticky md:top-0 min-h-[70vh] md:h-screen w-full flex flex-col items-center justify-center text-center px-6 py-20 z-0">
+    <div class="max-w-3xl mx-auto">
+      <h3 class="text-sm font-bold tracking-widest text-stone-500 uppercase mb-4">How PMI Works</h3>
+      <h2 class="text-4xl sm:text-5xl md:text-7xl font-serif text-stone-900 mb-8 tracking-tight leading-[1.1]">
+        The Four Steps That <br class="hidden md:block"/> Make the Difference
+      </h2>
+      <p class="text-lg md:text-2xl text-stone-600 font-medium leading-relaxed">
+        Any agency can build you a website. What separates PMI is what happens <span class="italic text-stone-900">before</span> the design starts.
+      </p>
+    </div>
+  </div>
+
+  <!-- Cards Container -->
+  <div class="relative flex flex-col">
+    {steps.map((step, index) => (
+      <div 
+        class={`relative md:sticky md:top-0 min-h-[50vh] md:h-screen w-full flex flex-col md:flex-row ${step.bgColor} ${step.textColor} transition-colors duration-500 shadow-[0_-10px_40px_rgba(0,0,0,0.15)]`} 
+        style={`z-index: ${index + 1};`}
+      >
+        <!-- Left side: Asset (using large typography as a placeholder asset) - Hidden on mobile -->
+        <div class={`hidden md:flex w-full md:w-1/2 items-center justify-center p-12 border-b md:border-b-0 md:border-r ${step.borderColor} relative overflow-hidden group min-h-[30vh] md:min-h-full`}>
+          <!-- Abstract Background Element -->
+          <div class="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-700 bg-[radial-gradient(circle_at_center,currentColor_0%,transparent_70%)]"></div>
+          
+          <!-- Large Number Asset -->
+          <div class={`text-[8rem] md:text-[24rem] font-serif font-bold leading-none tracking-tighter ${step.accent} opacity-20 transform group-hover:scale-105 transition-transform duration-700`}>
+            {step.number}
+          </div>
+        </div>
+        
+        <!-- Right side: Content -->
+        <div class="w-full md:w-1/2 flex items-center p-8 py-16 md:p-16 lg:p-24 h-auto md:h-full overflow-y-auto">
+          <div class="max-w-xl">
+            <div class={`text-4xl md:text-6xl font-serif font-bold ${step.accent} mb-6 md:mb-8`}>
+              {step.number}
+            </div>
+            <h3 class="text-3xl md:text-5xl font-serif mb-6 md:mb-8 leading-[1.1]">
+              {step.title}
+            </h3>
+            <p class="text-base md:text-xl opacity-80 leading-relaxed font-medium">
+              {step.description}
+            </p>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,53 @@
+---
+// src/components/Hero.astro
+import { sanityClient } from 'sanity:client';
+
+const query = `*[_type == "homePage"][0]{ hero { "videoUrl": backgroundVideo.asset->url } }`;
+const homePage = await sanityClient.fetch(query);
+const videoUrl = homePage?.hero?.videoUrl || "/Video%20Project%2021%20(2).mp4";
+---
+<section class="relative min-h-screen flex items-center bg-stone-900 overflow-hidden">
+  
+  <!-- Full Width Video Background -->
+  <div class="absolute inset-0 z-0">
+    <video 
+      autoplay 
+      loop 
+      muted 
+      playsinline 
+      class="w-full h-full object-cover object-center"
+    >
+      <source src={videoUrl} type="video/mp4" />
+    </video>
+  </div>
+
+  <!-- Gradient Overlay: Darker on left for text readability, fading to transparent on right -->
+  <div class="absolute inset-0 z-0 bg-gradient-to-b md:bg-gradient-to-r from-stone-900/95 via-stone-900/60 to-transparent pointer-events-none"></div>
+
+  <!-- Content Layer -->
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pt-32 pb-20 text-left flex items-center">
+    <div class="max-w-xl">
+      <div class="inline-flex items-center gap-2 py-2 rounded-full border-white/10 text-stone-200 text-sm font-medium mb-8 ">
+        <svg class="w-4 h-4 text-[#F38DF6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+        </svg>
+        Experts in Berks County and the Lehigh Valley
+      </div>
+      
+      <h1 class="text-5xl sm:text-6xl md:text-7xl font-serif text-white tracking-tight leading-[1.1] mb-6">
+        Websites, Ads and SEO that bring real leads.
+      </h1>
+      
+      <p class="text-lg md:text-xl text-stone-300 mb-10 font-normal leading-relaxed">
+        A digital marketing agency built for Berks County and the Lehigh Valley.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row items-start gap-4">
+        <a href="#consultation" class="w-full sm:w-auto px-8 py-4 rounded-sm bg-[#E7E5E4] text-stone-900 font-semibold hover:bg-white transition-colors shadow-lg hover:-translate-y-0.5 transform duration-300 text-center">
+          Get a free Consultation
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

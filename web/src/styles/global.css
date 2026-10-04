@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Newsreader", serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-[#E7E5E4] text-stone-900 font-sans antialiased selection:bg-stone-300 selection:text-stone-900;
+  }
+}
