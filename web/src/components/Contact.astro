@@ -112,3 +112,72 @@
     </div>
   </div>
 </section>
+
+<script>
+  const form = document.getElementById('contact-form');
+  const submitBtn = form.querySelector('button[type="submit"]');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // Change button state
+    const originalText = submitBtn.innerText;
+    submitBtn.innerText = 'Sending...';
+    submitBtn.disabled = true;
+    
+    const formData = new FormData(form);
+    
+    // HubSpot requires data in a specific fields array format
+    const data = {
+      fields: [
+        { name: 'firstname', value: formData.get('firstname') },
+        { name: 'email', value: formData.get('email') },
+        { name: 'phone', value: formData.get('phone') },
+        { name: 'region', value: formData.get('region') },
+        { name: 'message', value: formData.get('message') }
+      ],
+      context: {
+        pageUri: window.location.href,
+        pageName: document.title
+      }
+    };
+
+    const portalId = '247635825';
+    const formId = '54b177d3-5056-411b-b8d7-99c8c8e4fbe6';
+    const url = `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`;
+
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        submitBtn.innerText = 'Sent Successfully!';
+        submitBtn.classList.replace('bg-[#F38DF6]', 'bg-green-400');
+        form.reset();
+        
+        setTimeout(() => {
+          submitBtn.innerText = originalText;
+          submitBtn.classList.replace('bg-green-400', 'bg-[#F38DF6]');
+          submitBtn.disabled = false;
+        }, 5000);
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('HubSpot Submission Error:', error);
+      submitBtn.innerText = 'Error! Try Again.';
+      submitBtn.classList.replace('bg-[#F38DF6]', 'bg-red-400');
+      
+      setTimeout(() => {
+        submitBtn.innerText = originalText;
+        submitBtn.classList.replace('bg-red-400', 'bg-[#F38DF6]');
+        submitBtn.disabled = false;
+      }, 3000);
+    }
+  });
+</script>
