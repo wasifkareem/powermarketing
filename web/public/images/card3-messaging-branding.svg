@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="3in" height="2in" role="img" aria-label="Illustration: two strategists amplifying a brand message through a giant megaphone">
+  <defs>
+    <filter id="wob" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="42" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <path id="sp" d="M0 -16Q3 -3 16 0Q3 3 0 16Q-3 3 -16 0Q-3 -3 0 -16Z" fill="#F38DF6" stroke="none">
+      <animateTransform attributeName="transform" type="scale" values="1; 1.5; 1" dur="2s" repeatCount="indefinite" additive="sum"/>
+      <animate attributeName="opacity" values="1; 0.4; 1" dur="2s" repeatCount="indefinite" />
+    </path>
+    <path id="heart" d="M0 -10 C -15 -25, -30 0, 0 20 C 30 0, 15 -25, 0 -10Z" fill="#F38DF6" stroke="#2B0A2E" stroke-width="4">
+      <animateTransform attributeName="transform" type="scale" values="1; 1.2; 1" dur="1s" repeatCount="indefinite" additive="sum"/>
+    </path>
+  </defs>
+  <g filter="url(#wob)" stroke="#F38DF6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    
+    <!-- Backdrop Blob -->
+    <path d="M120 220C180 80 1000 80 1080 200C1160 320 1140 600 1050 660C920 740 250 740 140 640C40 550 50 350 120 220Z" fill="#1E0822" stroke="none"/>
+
+    <!-- Ground -->
+    <path d="M60 680H1140" stroke-width="6"/>
+
+    <!-- Huge Megaphone in Center -->
+    <path d="M450 550 L480 350 L850 180 L900 620 L450 550 Z" fill="#140518" stroke="#F38DF6" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M480 350 L420 360 L400 520 L450 550" fill="#8A2A8E" stroke="#3A1140" stroke-width="6" stroke-linejoin="round"/>
+    
+    <!-- Megaphone handle -->
+    <path d="M550 510 V 620 H 650 V 530" fill="none" stroke="#8A2A8E" stroke-width="16"/>
+
+    <!-- Sound Waves / Branding bursting out -->
+    <path d="M960 220 Q1050 300 980 400" stroke="#F38DF6" stroke-width="8"/>
+    <path d="M1020 150 Q1150 350 1060 550" stroke="#8A2A8E" stroke-width="12"/>
+    <path d="M920 520 Q1000 600 950 680" stroke="#F38DF6" stroke-width="8"/>
+    
+    <!-- Floating Brand Elements -->
+    <use href="#heart" transform="translate(1000 250) scale(1.5) rotate(15)"/>
+    <use href="#sp" transform="translate(900 120) scale(2)"/>
+    <use href="#sp" transform="translate(1100 450) scale(1.5)"/>
+    <!-- Brand badge -->
+    <circle cx="1020" cy="500" r="40" fill="#FFE8FD" stroke="#2B0A2E" stroke-width="6"/>
+    <path d="M1000 500 L1015 515 L1040 485" stroke="#F38DF6" stroke-width="8"/>
+
+    <!-- ANALYST 1 (Left) Speaking into mic -->
+    <path d="M220 680L250 540C260 500 320 500 330 540L360 680Z" fill="#F38DF6" stroke="#2B0A2E" stroke-width="5"/>
+    <circle cx="290" cy="420" r="45" fill="#FFE8FD" stroke="#2B0A2E" stroke-width="6"/>
+    <!-- Hair Spikes -->
+    <path d="M250 390 L240 350 L270 370 L280 330 L300 370 L320 340 L330 380" fill="#8A2A8E" stroke="#2B0A2E" stroke-width="4"/>
+    <!-- Face (Profile looking right) -->
+    <path d="M335 410L350 420L335 430" stroke="#2B0A2E" stroke-width="4"/> <!-- Nose -->
+    <circle cx="315" cy="405" r="5" fill="#2B0A2E" stroke="none"/>
+    <path d="M315 440 Q325 455 310 460" stroke="#2B0A2E" stroke-width="4"/> <!-- Open mouth -->
+    
+    <!-- Mic -->
+    <rect x="360" y="430" width="20" height="60" rx="10" fill="#140518" stroke="#8A2A8E" stroke-width="4" transform="rotate(-30 360 430)"/>
+    <path d="M385 415 L430 450" stroke="#2B0A2E" stroke-width="6"/> <!-- Cable to megaphone -->
+
+    <!-- Arm holding mic -->
+    <path d="M270 540 Q320 580 350 490" stroke="#2B0A2E" stroke-width="26"/>
+    <path d="M270 540 Q320 580 350 490" stroke="#F38DF6" stroke-width="18"/>
+
+    <!-- STRATEGIST 2 (Right) Adjusting dials on the Megaphone -->
+    <path d="M680 680L700 550C710 510 770 510 780 550L800 680Z" fill="#8A2A8E" stroke="#2B0A2E" stroke-width="5"/>
+    <!-- Head -->
+    <circle cx="740" cy="440" r="40" fill="#FFE8FD" stroke="#2B0A2E" stroke-width="6"/>
+    <path d="M700 440 C700 380 780 380 780 440" fill="#F38DF6" stroke="#2B0A2E" stroke-width="4"/> <!-- Hat/Hair -->
+    <circle cx="730" cy="450" r="4" fill="#2B0A2E" stroke="none"/>
+    <circle cx="760" cy="450" r="4" fill="#2B0A2E" stroke="none"/>
+    <path d="M735 470 Q745 475 755 470" stroke="#2B0A2E" stroke-width="4"/>
+    
+    <!-- Arm reaching to dial -->
+    <path d="M740 540 Q710 500 660 500" stroke="#2B0A2E" stroke-width="24"/>
+    <path d="M740 540 Q710 500 660 500" stroke="#8A2A8E" stroke-width="16"/>
+    <!-- Dials on Megaphone -->
+    <circle cx="620" cy="420" r="25" fill="#FFE8FD" stroke="#2B0A2E" stroke-width="6"/>
+    <path d="M620 420 L640 400" stroke="#2B0A2E" stroke-width="6"/>
+    <circle cx="600" cy="490" r="15" fill="#F38DF6" stroke="#2B0A2E" stroke-width="4"/>
+
+  </g>
+</svg>

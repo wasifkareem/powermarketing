@@ -33,17 +33,19 @@
 
         <!-- Right Form -->
         <div class="w-full">
-          <form class="space-y-4 md:space-y-6" onsubmit="event.preventDefault();">
+          <form id="contact-form" class="space-y-4 md:space-y-6" action="/#consultation" method="POST">
             <!-- Row 1: Name & Email -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
               <input 
                 type="text" 
+                name="firstname"
                 placeholder="Name" 
                 required
                 class="w-full px-4 py-3.5 md:px-6 md:py-4 rounded-md bg-white/95 backdrop-blur-sm border border-stone-200 focus:border-fuchsia-500 focus:ring-4 focus:ring-fuchsia-500/20 outline-none text-base text-stone-900 placeholder-stone-400 transition-all shadow-sm" 
               />
               <input 
                 type="email" 
+                name="email"
                 placeholder="Email" 
                 required
                 class="w-full px-4 py-3.5 md:px-6 md:py-4 rounded-md bg-white/95 backdrop-blur-sm border border-stone-200 focus:border-fuchsia-500 focus:ring-4 focus:ring-fuchsia-500/20 outline-none text-base text-stone-900 placeholder-stone-400 transition-all shadow-sm" 
@@ -54,11 +56,12 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
               <input 
                 type="tel" 
+                name="phone"
                 placeholder="Phone" 
                 class="w-full px-4 py-3.5 md:px-6 md:py-4 rounded-md bg-white/95 backdrop-blur-sm border border-stone-200 focus:border-fuchsia-500 focus:ring-4 focus:ring-fuchsia-500/20 outline-none text-base text-stone-900 placeholder-stone-400 transition-all shadow-sm" 
               />
               <div class="relative">
-                <select required class="w-full px-4 py-3.5 md:px-6 md:py-4 rounded-md bg-white/95 backdrop-blur-sm border border-stone-200 focus:border-fuchsia-500 focus:ring-4 focus:ring-fuchsia-500/20 outline-none text-base text-stone-900 placeholder-stone-400 transition-all shadow-sm appearance-none cursor-pointer">
+                <select name="region" required class="w-full px-4 py-3.5 md:px-6 md:py-4 rounded-md bg-white/95 backdrop-blur-sm border border-stone-200 focus:border-fuchsia-500 focus:ring-4 focus:ring-fuchsia-500/20 outline-none text-base text-stone-900 placeholder-stone-400 transition-all shadow-sm appearance-none cursor-pointer">
                   <option value="" disabled selected>Select Region</option>
                   <option value="Berks County">Berks County</option>
                   <option value="Lehigh Valley">Lehigh Valley</option>
@@ -75,6 +78,7 @@
 
             <!-- Message -->
             <textarea 
+              name="message"
               placeholder="Message" 
               rows="4" 
               required
