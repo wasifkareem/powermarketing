@@ -1,19 +1,42 @@
 ---
 import '../styles/global.css';
-const { content, title } = Astro.props;
-const pageTitle = title || content?.title || 'Power Marketing International';
+import ContactModal from '../components/ContactModal.astro';
+const { content, title, description, image } = Astro.props;
+
+const pageTitle = title || content?.title || 'Power Marketing International | SEO & Web Design';
+const pageDescription = description || content?.description || 'We bring big-agency expertise to local businesses, helping you untangle complex marketing problems and drive real, measurable revenue.';
+const pageImage = image || content?.image || '/images/hero_blend_bg.jpg';
 ---
 
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
 		<title>{pageTitle}</title>
+		
+		<!-- Primary Meta Tags -->
+		<meta name="description" content={pageDescription} />
+		<meta name="author" content="Power Marketing International" />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={pageDescription} />
+		<meta property="og:image" content={new URL(pageImage, Astro.url)} />
+		
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={Astro.url} />
+		<meta property="twitter:title" content={pageTitle} />
+		<meta property="twitter:description" content={pageDescription} />
+		<meta property="twitter:image" content={new URL(pageImage, Astro.url)} />
 	</head>
 	<body>
 		<slot />
+		
+		<ContactModal />
 		
 		<!-- Start of HubSpot Embed Code -->
 		<script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/247635825.js"></script>

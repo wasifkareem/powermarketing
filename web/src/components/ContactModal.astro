@@ -1,0 +1,229 @@
+---
+// src/components/ContactModal.astro
+---
+
+<!-- Modal Overlay -->
+<div id="global-contact-modal" class="fixed inset-0 z-[100] hidden items-center justify-center">
+  <!-- Backdrop -->
+  <div id="modal-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
+  
+  <!-- Modal Content -->
+  <div id="modal-content" class="relative w-full max-w-2xl bg-stone-50 rounded-2xl shadow-2xl overflow-hidden mx-4 transform scale-95 opacity-0 transition-all duration-300">
+    
+    <!-- Close Button -->
+    <button id="modal-close-btn" class="absolute top-4 right-4 z-30 p-2 bg-white/50 hover:bg-white rounded-full text-stone-600 hover:text-stone-900 transition-colors">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    </button>
+
+    <!-- Header -->
+    <div class="bg-white px-8 pt-10 pb-8 text-center border-b border-stone-100">
+      <h2 class="text-3xl md:text-4xl font-serif text-stone-900 mb-3">Request a Consultation</h2>
+      <p class="text-stone-500 font-medium">Fill out the form below and we'll be in touch shortly.</p>
+    </div>
+
+    <!-- Form Container -->
+    <div class="p-8 relative">
+      
+      <!-- Success Message (Hidden by default) -->
+      <div id="modal-success-message" class="absolute inset-0 hidden flex-col items-center justify-center text-center bg-stone-50 z-20 opacity-0 transition-opacity duration-500">
+        <div class="w-16 h-16 bg-green-100 text-green-500 rounded-full flex items-center justify-center mb-4 shadow-sm border border-green-200">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+        </div>
+        <h3 class="text-2xl font-serif text-stone-900 mb-2">Thank you!</h3>
+        <p class="text-stone-600 font-medium px-8">We've received your request and will contact you soon.</p>
+        <button id="modal-success-close" class="mt-8 px-6 py-2 bg-stone-200 hover:bg-stone-300 text-stone-800 rounded-md font-medium transition-colors">Close window</button>
+      </div>
+
+      <!-- Form -->
+      <form id="modal-contact-form" class="space-y-4 md:space-y-6 transition-opacity duration-500 relative z-10" action="/" method="POST">
+        <!-- Row 1: Name & Email -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input type="text" name="firstname" placeholder="Name" required class="w-full px-4 py-3 rounded-md bg-white border border-stone-200 focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 outline-none text-stone-900 placeholder-stone-400 transition-all shadow-sm" />
+          <input type="email" name="email" placeholder="Email" required class="w-full px-4 py-3 rounded-md bg-white border border-stone-200 focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 outline-none text-stone-900 placeholder-stone-400 transition-all shadow-sm" />
+        </div>
+
+        <!-- Row 2: Phone & City -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none border-r border-stone-200 pr-3 my-1 z-10">
+              <span class="text-stone-500 font-medium text-sm">+1</span>
+            </div>
+            <input 
+              type="tel" 
+              id="modal-phone-input"
+              name="phone" 
+              placeholder="(555) 000-0000" 
+              maxlength="14" 
+              required
+              class="w-full pl-[4.5rem] pr-4 py-3 rounded-md bg-white border border-stone-200 focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 outline-none text-stone-900 placeholder-stone-400 transition-all shadow-sm relative z-0" 
+            />
+          </div>
+          <div class="relative">
+            <select name="region" required class="w-full px-4 py-3 rounded-md bg-white border border-stone-200 focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 outline-none text-stone-900 placeholder-stone-400 transition-all shadow-sm appearance-none cursor-pointer">
+              <option value="" disabled selected>Select Region</option>
+              <option value="Berks County">Berks County</option>
+              <option value="Lehigh Valley">Lehigh Valley</option>
+              <option value="Other">Other</option>
+            </select>
+            <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none text-stone-400">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Message -->
+        <textarea name="message" placeholder="Message" rows="3" required class="w-full px-4 py-3 rounded-md bg-white border border-stone-200 focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 outline-none text-stone-900 placeholder-stone-400 transition-all shadow-sm resize-none"></textarea>
+        
+        <!-- Privacy Checkbox -->
+        <div class="flex items-center gap-3 pt-2">
+          <input type="checkbox" id="modal-privacy" required class="w-5 h-5 rounded-sm border-stone-300 text-fuchsia-600 focus:ring-fuchsia-500/50 bg-white cursor-pointer" />
+          <label for="modal-privacy" class="text-stone-600 text-sm cursor-pointer leading-tight">
+            I accept the <a href="#" class="underline hover:text-stone-900 transition-colors">Privacy Policy</a>*
+          </label>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="w-full py-4 mt-2 rounded-md bg-[#F38DF6] text-black font-bold text-lg hover:bg-fuchsia-400 transition-colors duration-300 shadow-sm hover:shadow-md">
+          Send Request
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('global-contact-modal');
+    const backdrop = document.getElementById('modal-backdrop');
+    const content = document.getElementById('modal-content');
+    const closeBtn = document.getElementById('modal-close-btn');
+    const successCloseBtn = document.getElementById('modal-success-close');
+    
+    const form = document.getElementById('modal-contact-form');
+    const submitBtn = form?.querySelector('button[type="submit"]');
+    const successMsg = document.getElementById('modal-success-message');
+
+    // Function to open modal
+    const openModal = (e) => {
+      e.preventDefault();
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      
+      // Trigger animations
+      setTimeout(() => {
+        backdrop.classList.remove('opacity-0');
+        content.classList.remove('opacity-0', 'scale-95');
+        content.classList.add('opacity-100', 'scale-100');
+      }, 10);
+    };
+
+    // Function to close modal
+    const closeModal = () => {
+      backdrop.classList.add('opacity-0');
+      content.classList.remove('opacity-100', 'scale-100');
+      content.classList.add('opacity-0', 'scale-95');
+      document.body.style.overflow = '';
+      
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        
+        // Reset form state on close so it's fresh next time
+        if (form && successMsg) {
+          form.style.opacity = '1';
+          form.style.pointerEvents = 'auto';
+          successMsg.classList.add('hidden');
+          successMsg.classList.remove('flex', 'opacity-100');
+          successMsg.classList.add('opacity-0');
+          form.reset();
+        }
+      }, 300);
+    };
+
+    // Phone formatting
+    const phoneInput = document.getElementById('modal-phone-input');
+    if (phoneInput) {
+      phoneInput.addEventListener('input', function (e) {
+        let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+        e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+      });
+    }
+
+
+    // Attach click listeners to all links pointing to #consultation
+    const ctaLinks = document.querySelectorAll('a[href="#consultation"]');
+    ctaLinks.forEach(link => {
+      link.addEventListener('click', openModal);
+    });
+
+    // Close handlers
+    closeBtn?.addEventListener('click', closeModal);
+    backdrop?.addEventListener('click', closeModal);
+    successCloseBtn?.addEventListener('click', closeModal);
+
+    // Form submission
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const originalText = submitBtn.innerText;
+      submitBtn.innerText = 'Sending...';
+      submitBtn.disabled = true;
+      
+      const formData = new FormData(form);
+      const data = {
+        fields: [
+          { name: 'firstname', value: formData.get('firstname') },
+          { name: 'email', value: formData.get('email') },
+          { name: 'phone', value: formData.get('phone') },
+          { name: 'region', value: formData.get('region') },
+          { name: 'message', value: formData.get('message') }
+        ],
+        context: {
+          pageUri: window.location.href,
+          pageName: document.title
+        }
+      };
+
+      const portalId = '247635825';
+      const formId = '54b177d3-5056-411b-b8d7-99c8c8e4fbe6';
+      const url = `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`;
+
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+          form.style.opacity = '0';
+          form.style.pointerEvents = 'none';
+          
+          setTimeout(() => {
+            successMsg.classList.remove('hidden');
+            successMsg.classList.add('flex');
+            setTimeout(() => {
+              successMsg.classList.remove('opacity-0');
+              successMsg.classList.add('opacity-100');
+            }, 50);
+          }, 500);
+
+          submitBtn.innerText = originalText;
+          submitBtn.disabled = false;
+        } else {
+          throw new Error('Submission failed');
+        }
+      } catch (error) {
+        submitBtn.innerText = 'Error! Try Again.';
+        submitBtn.classList.replace('bg-[#F38DF6]', 'bg-red-400');
+        
+        setTimeout(() => {
+          submitBtn.innerText = originalText;
+          submitBtn.classList.replace('bg-red-400', 'bg-[#F38DF6]');
+          submitBtn.disabled = false;
+        }, 3000);
+      }
+    });
+  });
+</script>
