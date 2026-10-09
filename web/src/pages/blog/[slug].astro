@@ -91,7 +91,7 @@ if (!post) {
       <!-- Table of Contents Sidebar -->
       <aside class="hidden lg:block w-64 shrink-0">
         <div class="sticky top-32">
-          <h3 class="text-sm font-bold text-stone-900 uppercase tracking-widest mb-4">Table of Contents</h3>
+          <h2 class="text-sm font-bold text-stone-900 uppercase tracking-widest mb-4">Table of Contents</h2>
           <ul id="toc-list" class="space-y-3 text-sm font-medium text-stone-500 border-l border-stone-200 pl-4">
              <!-- Populated by JS -->
           </ul>
@@ -132,7 +132,7 @@ if (!post) {
           <div class="bg-white rounded-[2rem] p-6 md:p-12 shadow-sm border border-stone-100 flex flex-col md:flex-row gap-5 md:gap-8 items-center md:items-start text-center md:text-left">
             <img src="/images/alam.webp" alt={post.author.name} loading="lazy" decoding="async" class="w-20 h-20 md:w-32 md:h-32 rounded-full object-cover object-top shadow-sm border border-stone-200" />
             <div>
-              <h3 class="font-bold text-stone-900 text-xl md:text-2xl mb-2 md:mb-3">About {post.author.name}</h3>
+              <h2 class="font-bold text-stone-900 text-xl md:text-2xl mb-2 md:mb-3">About {post.author.name}</h2>
               <div class="text-stone-600 text-base md:text-lg leading-relaxed prose prose-stone max-w-none prose-p:my-2 md:prose-p:my-4">
                 <PortableText value={post.author.bio} />
               </div>

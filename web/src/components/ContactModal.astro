@@ -38,8 +38,8 @@
       <form id="modal-contact-form" class="space-y-4 md:space-y-6 transition-opacity duration-500 relative z-10" action="/" method="POST">
         <!-- Row 1: Name & Email -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input type="text" name="firstname" placeholder="Name" required class="w-full px-4 py-3 rounded-md bg-white border border-stone-200 focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 outline-none text-stone-900 placeholder-stone-400 transition-all shadow-sm" />
-          <input type="email" name="email" placeholder="Email" required class="w-full px-4 py-3 rounded-md bg-white border border-stone-200 focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 outline-none text-stone-900 placeholder-stone-400 transition-all shadow-sm" />
+          <input type="text" name="firstname" aria-label="First Name" placeholder="Name" required class="w-full px-4 py-3 rounded-md bg-white border border-stone-200 focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 outline-none text-stone-900 placeholder-stone-400 transition-all shadow-sm" />
+          <input type="email" name="email" aria-label="Email Address" placeholder="Email" required class="w-full px-4 py-3 rounded-md bg-white border border-stone-200 focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 outline-none text-stone-900 placeholder-stone-400 transition-all shadow-sm" />
         </div>
 
         <!-- Row 2: Phone & City -->
@@ -52,6 +52,7 @@
               type="tel" 
               id="modal-phone-input"
               name="phone" 
+              aria-label="Phone Number"
               placeholder="(555) 000-0000" 
               maxlength="14" 
               required
@@ -59,7 +60,7 @@
             />
           </div>
           <div class="relative">
-            <select name="region" required class="w-full px-4 py-3 rounded-md bg-white border border-stone-200 focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 outline-none text-stone-900 placeholder-stone-400 transition-all shadow-sm appearance-none cursor-pointer">
+            <select name="region" aria-label="Region" required class="w-full px-4 py-3 rounded-md bg-white border border-stone-200 focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 outline-none text-stone-900 placeholder-stone-400 transition-all shadow-sm appearance-none cursor-pointer">
               <option value="" disabled selected>Select Region</option>
               <option value="Berks County">Berks County</option>
               <option value="Lehigh Valley">Lehigh Valley</option>
@@ -72,11 +73,11 @@
         </div>
 
         <!-- Message -->
-        <textarea name="message" placeholder="Message" rows="3" required class="w-full px-4 py-3 rounded-md bg-white border border-stone-200 focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 outline-none text-stone-900 placeholder-stone-400 transition-all shadow-sm resize-none"></textarea>
+        <textarea name="message" aria-label="Message" placeholder="Message" rows="3" required class="w-full px-4 py-3 rounded-md bg-white border border-stone-200 focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 outline-none text-stone-900 placeholder-stone-400 transition-all shadow-sm resize-none"></textarea>
         
         <!-- Privacy Checkbox -->
         <div class="flex items-center gap-3 pt-2">
-          <input type="checkbox" id="modal-privacy" required class="w-5 h-5 rounded-sm border-stone-300 text-fuchsia-600 focus:ring-fuchsia-500/50 bg-white cursor-pointer" />
+          <input type="checkbox" id="modal-privacy" aria-label="Accept Privacy Policy" required class="w-5 h-5 rounded-sm border-stone-300 text-fuchsia-600 focus:ring-fuchsia-500/50 bg-white cursor-pointer" />
           <label for="modal-privacy" class="text-stone-600 text-sm cursor-pointer leading-tight">
             I accept the <a href="#" class="underline hover:text-stone-900 transition-colors">Privacy Policy</a>*
           </label>
