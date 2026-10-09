@@ -1,7 +1,8 @@
 ---
 // src/components/Navbar.astro
+const { alwaysBlack = false } = Astro.props;
 ---
-<header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent bg-transparent">
+<header id="main-header" data-always-black={alwaysBlack} class={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${alwaysBlack ? 'bg-black border-white/10 shadow-md' : 'border-transparent bg-transparent'}`}>
   <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
       <img src="/images/logo.png" alt="Power Marketing Logo" class="h-10 w-auto object-contain" />
@@ -54,6 +55,8 @@
     const header = document.getElementById('main-header');
     if (!header) return;
     
+    if (header.dataset.alwaysBlack === "true") return;
+
     if (window.scrollY > 20) {
       header.classList.add('bg-black', 'border-white/10', 'shadow-md');
       header.classList.remove('bg-transparent', 'border-transparent');

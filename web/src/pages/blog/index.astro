@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/main.astro';
 import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
 import { sanityClient } from "sanity:client";
 
 const posts = await sanityClient.fetch(`*[_type == "post" && defined(slug.current)] | order(publishedAt desc) {
@@ -13,19 +14,47 @@ const posts = await sanityClient.fetch(`*[_type == "post" && defined(slug.curren
 ---
 
 <Layout title="Blog | Power Marketing International">
-  <Navbar />
-  <main class="min-h-screen bg-[#FDFBF7] pt-32 pb-24 px-6 md:px-12">
-    <div class="max-w-4xl mx-auto">
-      <h1 class="text-5xl md:text-7xl font-serif text-stone-900 mb-12">Our Blog</h1>
-      <div class="grid grid-cols-1 gap-12">
+  <Navbar alwaysBlack={true} />
+  <!-- New Hero Section -->
+  <header class="bg-black text-white pt-40">
+    <div class="max-w-5xl mx-auto px-6 md:px-12 pb-16 md:pb-24">
+      <h1 class="text-5xl md:text-[4rem] lg:text-[5rem] font-sans font-medium tracking-tight mb-6">
+        Power Marketing Blog
+      </h1>
+      <p class="text-xl md:text-2xl text-stone-300 max-w-2xl leading-relaxed font-medium">
+        Tips, insights, and real-world strategies to level up your marketing, web design, and digital revenue.
+      </p>
+    </div>
+    
+    <!-- Stats Bar -->
+    <div class="bg-stone-900 border-y border-white/10">
+      <div class="max-w-5xl mx-auto px-6 md:px-12 flex flex-col md:flex-row text-sm md:text-[0.95rem]">
+        <div class="py-4 md:py-5 flex-1 text-center md:text-left border-b md:border-b-0 md:border-r border-white/10 md:pr-8">
+          <span class="font-bold text-white">15+ Years</span> <span class="text-stone-400">serving local businesses</span>
+        </div>
+        <div class="py-4 md:py-5 flex-1 text-center border-b md:border-b-0 md:border-r border-white/10 md:px-8">
+          <span class="font-bold text-white">Top 5%</span> <span class="text-stone-400">in web design agencies</span>
+        </div>
+        <div class="py-4 md:py-5 flex-1 text-center md:text-right md:pl-8">
+          <span class="font-bold text-white">Proven</span> <span class="text-stone-400">measurable revenue growth</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="min-h-screen bg-white py-16 px-6 md:px-12">
+    <div class="max-w-5xl mx-auto">
+      <div class="flex flex-col">
         {posts.map((post) => (
-          <article class="bg-white p-8 rounded-2xl shadow-sm border border-stone-100 hover:shadow-md transition-shadow group">
-            <a href={`/blog/${post.slug.current}`} class="block">
-              <h2 class="text-3xl font-serif text-stone-900 group-hover:text-fuchsia-600 transition-colors mb-4">{post.title}</h2>
-              <div class="flex items-center text-stone-500 font-medium space-x-4">
-                {post.author && <span>By {post.author.name}</span>}
-                <span>&bull;</span>
-                <time datetime={post.publishedAt}>
+          <article class="group border-b border-stone-100 py-12 last:border-0">
+            <a href={`/blog/${post.slug.current}`} class="grid grid-cols-1 md:grid-cols-[200px_1fr] lg:grid-cols-[240px_1fr] gap-6 md:gap-12 items-start">
+              
+              <div class="flex flex-col">
+                <div class="flex items-center gap-3 mb-1">
+                  <img src="/images/alam.webp" alt={post.author?.name || 'Author'} class="w-8 h-8 rounded-full object-cover object-top border border-stone-200" />
+                  <span class="text-[0.95rem] font-semibold text-stone-700">{post.author?.name || 'Author'}</span>
+                </div>
+                <time class="text-[0.9rem] text-stone-400 font-medium md:pl-11" datetime={post.publishedAt}>
                   {new Date(post.publishedAt).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
@@ -33,13 +62,22 @@ const posts = await sanityClient.fetch(`*[_type == "post" && defined(slug.curren
                   })}
                 </time>
               </div>
+
+              <div>
+                <div class="flex gap-2 mb-4">
+                  <span class="px-2 py-1 bg-stone-100 text-stone-600 text-xs font-semibold rounded-sm tracking-wide">Marketing</span>
+                </div>
+                <h2 class="text-3xl md:text-[2.25rem] lg:text-[2.5rem] font-medium font-sans text-stone-900 group-hover:text-fuchsia-600 transition-colors leading-[1.2] tracking-tight">{post.title}</h2>
+              </div>
+              
             </a>
           </article>
         ))}
         {posts.length === 0 && (
-          <p class="text-xl text-stone-500 font-medium">No posts found.</p>
+          <p class="text-xl text-stone-500 font-medium py-12">No posts found.</p>
         )}
       </div>
     </div>
   </main>
+  <Footer />
 </Layout>
