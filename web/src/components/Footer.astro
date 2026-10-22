@@ -1,5 +1,6 @@
 ---
 // src/components/Footer.astro
+const { brandName = "Power Marketing" } = Astro.props;
 ---
 
 <footer class="bg-black text-white pt-20 pb-10 border-t border-white/10">
@@ -11,8 +12,8 @@
         <!-- Logo -->
         <div>
           <a href="/" class="flex items-center gap-3 mb-4">
-            <img src="/images/logo.png" alt="Power Marketing Logo" loading="lazy" decoding="async" class="h-12 w-auto object-contain" />
-            <span class="text-2xl font-sans font-bold text-white tracking-tight">Power Marketing</span>
+            <img src="/images/logo.png" alt="Logo" loading="lazy" decoding="async" class="h-12 w-auto object-contain" />
+            <span class="text-2xl font-sans font-bold text-white tracking-tight">{brandName}</span>
           </a>
         </div>
         

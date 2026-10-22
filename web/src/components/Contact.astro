@@ -1,5 +1,21 @@
 ---
 // src/components/Contact.astro
+
+interface Props {
+  content?: {
+    heading?: string;
+    highlight?: string;
+    description?: string;
+    backgroundImageUrl?: string;
+  };
+}
+
+const { content } = Astro.props;
+
+const heading = content?.heading || "Request your free";
+const highlight = content?.highlight || "Consultation";
+const description = content?.description || "At our agency, we are passionate about delivering outstanding results and promoting substantial growth for our clients in Berks County and the Lehigh Valley. Leveraging our unique combination of creativity, strategic insight, and expertise, we go the extra mile to exceed expectations and achieve measurable success.";
+const bgImage = content?.backgroundImageUrl || "/images/sea-pattern-1000.png";
 ---
 
 <section id="consultation" class="py-0 md:py-24 px-0 md:px-12 bg-white border-t border-white/10">
@@ -8,7 +24,7 @@
     <!-- Blurred & Tinted Background Image -->
     <div 
       class="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105" 
-      style="background-image: url('/images/sea-pattern-1000.png'); filter: blur(6px);"
+      style={`background-image: url('${bgImage}'); filter: blur(6px);`}
     ></div>
     
     <!-- Color Overlay (Light tint) -->
@@ -21,13 +37,12 @@
         <!-- Left Content -->
         <div class="max-w-xl">
           <h2 class="text-4xl md:text-6xl lg:text-[4rem] font-serif tracking-tight mb-6 md:mb-10 text-stone-900 leading-[1.1]">
-            Request your free <br/> 
-            <span class="text-fuchsia-600">Consultation</span>
+            {heading} <br/> 
+            <span class="text-fuchsia-600">{highlight}</span>
           </h2>
           
           <p class="text-base md:text-xl text-stone-700 leading-relaxed font-medium">
-            At our agency, we are passionate about delivering outstanding results and promoting substantial growth for our clients in Berks County and the Lehigh Valley. 
-            <span class="hidden md:inline">Leveraging our unique combination of creativity, strategic insight, and expertise, we go the extra mile to exceed expectations and achieve measurable success.</span>
+            {description}
           </p>
         </div>
 

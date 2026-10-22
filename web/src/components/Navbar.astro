@@ -1,12 +1,12 @@
 ---
 // src/components/Navbar.astro
-const { alwaysBlack = false } = Astro.props;
+const { alwaysBlack = false, brandName = "Power Marketing" } = Astro.props;
 ---
 <header id="main-header" data-always-black={alwaysBlack} class={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${alwaysBlack ? 'bg-black border-white/10 shadow-md' : 'border-transparent bg-transparent'}`}>
   <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
-      <img src="/images/logo.png" alt="Power Marketing Logo" class="h-10 w-auto object-contain" />
-      <span class="text-2xl font-sans font-bold text-white tracking-tight hidden sm:block">Power Marketing</span>
+      <img src="/images/logo.png" alt="Logo" class="h-10 w-auto object-contain" />
+      <span class="text-2xl font-sans font-bold text-white tracking-tight hidden sm:block">{brandName}</span>
     </a>
     
     <nav class="hidden md:flex gap-8 items-center text-sm font-medium text-stone-300">

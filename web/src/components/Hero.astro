@@ -1,10 +1,24 @@
 ---
 // src/components/Hero.astro
-import { sanityClient } from 'sanity:client';
+interface Props {
+  content?: {
+    pillText?: string;
+    heading?: string;
+    description?: string;
+    ctaText?: string;
+    ctaLink?: string;
+    videoUrl?: string;
+  };
+}
 
-const query = `*[_type == "homePage"][0]{ hero { "videoUrl": backgroundVideo.asset->url } }`;
-const homePage = await sanityClient.fetch(query);
-const videoUrl = homePage?.hero?.videoUrl || "/Video%20Project%2021%20(2).mp4";
+const { content } = Astro.props;
+
+const pillText = content?.pillText || "Experts in Berks County and the Lehigh Valley";
+const heading = content?.heading || "Websites, Ads and SEO that bring real leads.";
+const description = content?.description || "Stop guessing what works. We build a single, data-driven growth engine designed specifically for businesses across Berks County and the Lehigh Valley.";
+const ctaText = content?.ctaText || "Get a free Consultation";
+const ctaLink = content?.ctaLink || "#consultation";
+const videoUrl = content?.videoUrl || "/Video%20Project%2021%20(2).mp4";
 ---
 <section class="relative min-h-screen flex items-center bg-stone-900 overflow-hidden">
   
@@ -27,25 +41,25 @@ const videoUrl = homePage?.hero?.videoUrl || "/Video%20Project%2021%20(2).mp4";
   <!-- Content Layer -->
   <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pt-32 pb-20 text-left flex items-center">
     <div class="max-w-xl">
-      <div class="inline-flex items-center gap-2 py-2 rounded-full border-white/10 text-stone-200 text-sm font-medium mb-8 ">
+      <div class="inline-flex items-center gap-2 py-2 rounded-full border-white/10 text-stone-200 text-sm font-medium mb-8">
         <svg class="w-4 h-4 text-[#F38DF6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
         </svg>
-        Experts in Berks County and the Lehigh Valley
+        {pillText}
       </div>
       
       <h1 class="text-5xl sm:text-6xl md:text-7xl font-serif text-white tracking-tight leading-[1.1] mb-6">
-        Websites, Ads and SEO that bring real leads.
+        {heading}
       </h1>
       
       <p class="text-lg md:text-xl text-stone-200 mb-10 font-normal leading-relaxed">
-        Stop guessing what works. We build a single, data-driven growth engine designed specifically for businesses across Berks County and the Lehigh Valley.
+        {description}
       </p>
       
       <div class="flex flex-col sm:flex-row items-start gap-4">
-        <a href="#consultation" class="w-full sm:w-auto px-8 py-4 rounded-sm bg-[#E7E5E4] text-stone-900 font-semibold hover:bg-white transition-colors shadow-lg hover:-translate-y-0.5 transform duration-300 text-center">
-          Get a free Consultation
+        <a href={ctaLink} class="w-full sm:w-auto px-8 py-4 rounded-sm bg-[#E7E5E4] text-stone-900 font-semibold hover:bg-white transition-colors shadow-lg hover:-translate-y-0.5 transform duration-300 text-center">
+          {ctaText}
         </a>
       </div>
     </div>

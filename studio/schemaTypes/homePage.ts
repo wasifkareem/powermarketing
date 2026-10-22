@@ -5,6 +5,7 @@ export const homePage = defineType({
   title: 'Home Page',
   type: 'document',
   groups: [
+    { name: 'general', title: 'General' },
     { name: 'hero', title: 'Hero Section' },
     { name: 'intro', title: 'Intro Section' },
     { name: 'strategy', title: 'Strategy Section' },
@@ -12,6 +13,14 @@ export const homePage = defineType({
     { name: 'contact', title: 'Contact Section' },
   ],
   fields: [
+    defineField({
+      name: 'title',
+      title: 'Page Title / Site Title',
+      type: 'string',
+      group: 'general',
+      initialValue: 'Power Marketing International',
+    }),
+
     // --- HERO SECTION ---
     defineField({
       name: 'hero',
@@ -22,6 +31,9 @@ export const homePage = defineType({
       fields: [
         defineField({ name: 'pillText', title: 'Pill Label (e.g. Experts in...)', type: 'string' }),
         defineField({ name: 'heading', title: 'Main Heading', type: 'string' }),
+        defineField({ name: 'description', title: 'Subheading / Description', type: 'text', rows: 3 }),
+        defineField({ name: 'ctaText', title: 'CTA Button Text', type: 'string' }),
+        defineField({ name: 'ctaLink', title: 'CTA Button Link', type: 'string', initialValue: '#consultation' }),
         defineField({ 
           name: 'backgroundVideo', 
           title: 'Background Video', 
@@ -41,11 +53,34 @@ export const homePage = defineType({
       options: { collapsible: true, collapsed: false },
       fields: [
         defineField({ name: 'heading', title: 'Heading', type: 'string' }),
-        defineField({ name: 'description', title: 'Description', type: 'text', rows: 4 }),
-        defineField({ name: 'authorName', title: 'Author Name', type: 'string' }),
+        defineField({ name: 'subheading', title: 'Subheading / Founder Intro', type: 'string' }),
+        defineField({ name: 'description', title: 'Description Paragraph', type: 'text', rows: 4 }),
+        defineField({ name: 'servicesButtonText', title: 'Services Button Text', type: 'string', initialValue: 'See featured services' }),
+        defineField({ name: 'aboutButtonText', title: 'About Button Text', type: 'string', initialValue: 'Learn more about us' }),
+        defineField({ name: 'authorName', title: 'Author / Founder Name', type: 'string' }),
         defineField({ name: 'authorRole', title: 'Author Role', type: 'string' }),
         defineField({ name: 'authorLocation', title: 'Author Location/Company', type: 'string' }),
         defineField({ name: 'authorImage', title: 'Author Image', type: 'image', options: { hotspot: true } }),
+        defineField({
+          name: 'facts',
+          title: 'Key Highlights / Badges',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                defineField({ name: 'highlight', title: 'Bold Highlight Text (e.g. 15 years serving)', type: 'string' }),
+                defineField({ name: 'text', title: 'Remaining Text (e.g. Berks County businesses)', type: 'string' }),
+              ],
+              preview: {
+                select: {
+                  title: 'highlight',
+                  subtitle: 'text',
+                },
+              },
+            },
+          ],
+        }),
       ],
     }),
 
@@ -86,14 +121,15 @@ export const homePage = defineType({
               fields: [
                 defineField({ name: 'number', title: 'Step Number (e.g. 01)', type: 'string' }),
                 defineField({ name: 'title', title: 'Step Title', type: 'string' }),
-                defineField({ name: 'description', title: 'Step Description', type: 'text', rows: 3 }),
+                defineField({ name: 'description', title: 'Step Description', type: 'text', rows: 4 }),
+                defineField({ name: 'imageSrc', title: 'Custom SVG/Image Path (e.g. /images/card1-competitive-analysis.svg)', type: 'string' }),
               ],
               preview: {
                 select: {
                   title: 'title',
-                  subtitle: 'number'
-                }
-              }
+                  subtitle: 'number',
+                },
+              },
             },
           ],
         }),
@@ -116,8 +152,11 @@ export const homePage = defineType({
     }),
   ],
   preview: {
-    prepare() {
-      return { title: 'Home Page Content' }
-    }
-  }
+    select: {
+      title: 'title',
+    },
+    prepare({ title }) {
+      return { title: title || 'Home Page Content' }
+    },
+  },
 })

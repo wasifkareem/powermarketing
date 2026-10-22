@@ -1,7 +1,25 @@
 ---
 // src/components/Strategy.astro
+
+interface Props {
+  content?: {
+    tag?: string;
+    heading?: string;
+    description1?: string;
+    description2?: string;
+    backgroundImageUrl?: string;
+  };
+}
+
+const { content } = Astro.props;
+
+const tag = content?.tag || "Our Methodology";
+const heading = content?.heading || "We Rely on \n Analytics for Results.";
+const description1 = content?.description1 || "Data drives every PMI engagement. We don’t guess — we uncover insights through deep competitor research, market intelligence, and conversion analysis.";
+const description2 = content?.description2 || "Analytics isn't just another service we offer alongside the rest. It’s the foundational engine that shapes our strategy and fuels our Web Design, SEO, and Google Ads to produce real, measurable growth.";
+const bgImage = content?.backgroundImageUrl || "/images/Live%20Tone%20Blend%20Group.png";
 ---
-<section id="strategy" class="relative py-32 border-t border-white/10 bg-cover bg-center bg-no-repeat" style="background-image: url('/images/Live%20Tone%20Blend%20Group.png');">
+<section id="strategy" class="relative py-32 border-t border-white/10 bg-cover bg-center bg-no-repeat" style={`background-image: url('${bgImage}');`}>
   <!-- Dark overlay with slight blur -->
   <div class="absolute inset-0 bg-black/50 backdrop-blur-[20px] z-0"></div>
 
@@ -12,30 +30,30 @@
       <div class="max-w-xl">
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-sm bg-white/10 border border-white/20 text-stone-200 text-sm font-medium mb-6 backdrop-blur-sm">
           <span class="w-2 h-2 rounded-sm bg-[#F38DF6] animate-pulse"></span>
-          Our Methodology
+          {tag}
         </div>
         
         <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif tracking-tight mb-8 text-white leading-[1.05]">
-          We Rely on <br/> Analytics for Results.
+          {heading}
         </h2>
         
         <div class="space-y-6 text-lg md:text-xl text-stone-200 leading-relaxed font-medium">
           <p>
-            Data drives every PMI engagement. We don’t guess — we uncover insights through deep competitor research, market intelligence, and conversion analysis.
+            {description1}
           </p>
           <p>
-            Analytics isn't just another service we offer alongside the rest. It’s the foundational engine that shapes our strategy and fuels our <strong class="text-white">Web Design</strong>, <strong class="text-white">SEO</strong>, and <strong class="text-white">Google Ads</strong> to produce real, measurable growth.
+            {description2}
           </p>
         </div>
       </div>
 
       <!-- Right Illustration (Glassmorphism) -->
-      <div class="w-full h-full min-h-[400px] flex items-center justify-center p-8 bg-white/5 backdrop-blur-md rounded-3xl  border-white/10 relative overflow-hidden shadow-2xl">
+      <div class="w-full h-full min-h-[400px] flex items-center justify-center p-8 bg-white/5 backdrop-blur-md rounded-3xl border-white/10 relative overflow-hidden shadow-2xl">
         
         <div class="relative w-full max-w-md mx-auto flex flex-col items-center">
           
           <!-- Top Card: Engine -->
-          <div class="w-64 bg-black/80 backdrop-blur-md text-white p-5 rounded-2xl shadow-xl shadow-black/30 border border-white/20 text-center relative z-10 ">
+          <div class="w-64 bg-black/80 backdrop-blur-md text-white p-5 rounded-2xl shadow-xl shadow-black/30 border border-white/20 text-center relative z-10">
              <div class="w-12 h-12 mx-auto bg-white/10 rounded-full flex items-center justify-center mb-3 p-1.5">
                <img src="/images/logo.png" alt="PMI Logo" loading="lazy" decoding="async" class="w-full h-full object-contain" />
              </div>
