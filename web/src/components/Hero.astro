@@ -18,40 +18,50 @@ const heading = content?.heading || "Branding, Websites, and SEO that move the n
 const description = content?.description || "We pair head-turning creative with high-performance web development, SEO, and paid media built for Pittsburgh businesses, without the downtown agency overhead.";
 const ctaText = content?.ctaText || "Schedule a Strategy Call";
 const ctaLink = content?.ctaLink || "#consultation";
-const videoUrl = content?.videoUrl || "/Video%20Project%2021%20(2).mp4";
+const videoUrl = content?.videoUrl || "/hero-bg.mp4";
 
 const clientLogos = [
   {
     name: "Dick's Sporting Goods",
-    src: "https://232creative.com/wp-content/uploads/2022/01/dicks-sporting-goods-logo.jpeg",
-    imgClass: "h-8 sm:h-9 max-w-[130px]"
+    src: "/images/logos/dicks-sporting-goods.webp",
+    imgClass: "h-8 sm:h-9 max-w-[130px]",
+    width: 130,
+    height: 36
   },
   {
     name: "Princeton University",
-    src: "https://232creative.com/wp-content/uploads/2022/01/princeton-university-seeklogo.com_.png",
-    imgClass: "h-8 sm:h-10 max-w-[130px]"
+    src: "/images/logos/princeton-university.webp",
+    imgClass: "h-8 sm:h-10 max-w-[130px]",
+    width: 130,
+    height: 40
   },
   {
     name: "Glenshaw Auto",
-    src: "https://232creative.com/wp-content/uploads/2022/01/Glenshaw-Auto.png",
-    imgClass: "h-8 sm:h-9 max-w-[130px]"
+    src: "/images/logos/glenshaw-auto.webp",
+    imgClass: "h-8 sm:h-9 max-w-[130px]",
+    width: 130,
+    height: 36
   },
   {
     name: "Avonworth Schools",
-    src: "https://232creative.com/wp-content/uploads/2022/01/ASchools-with-outline-1.png",
-    imgClass: "h-7 sm:h-9 max-w-[125px]"
+    src: "/images/logos/avonworth-schools.webp",
+    imgClass: "h-7 sm:h-9 max-w-[125px]",
+    width: 125,
+    height: 36
   }
 ];
 ---
 <section class="relative min-h-screen flex items-center bg-stone-900 overflow-hidden">
   
-  <!-- Full Width Video Background -->
+  <!-- Full Width Video Background with fast WebP poster -->
   <div class="absolute inset-0 z-0">
     <video 
       autoplay 
       loop 
       muted 
       playsinline 
+      preload="metadata"
+      poster="/images/hero-poster.webp"
       class="w-full h-full object-cover object-center"
     >
       <source src={videoUrl} type="video/mp4" />
@@ -107,6 +117,8 @@ const clientLogos = [
               <img 
                 src={logo.src} 
                 alt={logo.name} 
+                width={logo.width}
+                height={logo.height}
                 loading="lazy" 
                 decoding="async" 
                 class={`w-auto object-contain ${logo.imgClass}`} 

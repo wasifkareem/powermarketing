@@ -7,7 +7,7 @@
     "description": "We pair head-turning creative with high-performance web development, SEO, and paid media built for Pittsburgh businesses—without the downtown agency overhead.",
     "ctaText": "Schedule a Strategy Call",
     "ctaLink": "#consultation",
-    "videoUrl": "/Video%20Project%2021%20(2).mp4"
+    "videoUrl": "/hero-bg.mp4"
   },
   "intro": {
     "heading": "A small agency for big problems",
@@ -43,7 +43,7 @@
     "heading": "We Rely on \n Analytics for Results.",
     "description1": "Data drives every PMI engagement. We don't guess — we uncover insights through deep competitor research, market intelligence, and conversion analysis.",
     "description2": "Analytics isn't just another service we offer alongside the rest. It's the foundational engine that shapes our strategy and fuels our Web Design, SEO, and Google Ads to produce real, measurable growth.",
-    "backgroundImageUrl": "/images/Live%20Tone%20Blend%20Group.png"
+    "backgroundImageUrl": "/images/strategy-bg.webp"
   },
   "workflow": {
     "tag": "How PMI Works",
@@ -80,6 +80,6 @@
     "heading": "Request your free",
     "highlight": "Consultation",
     "description": "At our agency, we are passionate about delivering outstanding results and promoting substantial growth for our clients in Berks County and the Lehigh Valley. Leveraging our unique combination of creativity, strategic insight, and expertise, we go the extra mile to exceed expectations and achieve measurable success.",
-    "backgroundImageUrl": "/images/sea-pattern-1000.png"
+    "backgroundImageUrl": "/images/sea-pattern.webp"
   }
 }
